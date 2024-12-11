@@ -1,0 +1,27 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const dictionary_1 = require("../controllers/dictionary");
+const addMajor_1 = require("../controllers/dictionary/addMajor");
+const getGroups_1 = require("../controllers/dictionary/getGroups");
+const getMajors_1 = require("../controllers/dictionary/getMajors");
+const upload_1 = __importDefault(require("../middlewares/upload"));
+const verifyToken_1 = require("../middlewares/verifyToken");
+const dictionaryRouter = (0, express_1.Router)();
+dictionaryRouter.get("/", verifyToken_1.verifyToken, dictionary_1.getDictionary);
+dictionaryRouter.post("/addDictionary", verifyToken_1.verifyToken, dictionary_1.addDictionary);
+dictionaryRouter.put("/updateDictonary", verifyToken_1.verifyToken, dictionary_1.updateDictionary);
+dictionaryRouter.delete("/deleteDictionary", verifyToken_1.verifyToken, dictionary_1.deleteDictonary);
+dictionaryRouter.put("/deleteMajor", verifyToken_1.verifyToken, dictionary_1.deleteMajor);
+dictionaryRouter.post("/uploadFileDictionary", verifyToken_1.verifyToken, upload_1.default.single("file"), dictionary_1.uploadFileDictionary);
+dictionaryRouter.post("/addSchool", verifyToken_1.verifyToken, upload_1.default.single("file"), dictionary_1.addSchool);
+dictionaryRouter.get("/getAllSchool", verifyToken_1.verifyToken, dictionary_1.getAllSchool);
+dictionaryRouter.delete("/deleteAllSchool", verifyToken_1.verifyToken, dictionary_1.deleteAllSchool);
+dictionaryRouter.get("/getSchool", verifyToken_1.verifyToken, dictionary_1.getSchool);
+dictionaryRouter.get("/major", verifyToken_1.verifyToken, getMajors_1.getMajors);
+dictionaryRouter.post("/major", verifyToken_1.verifyToken, addMajor_1.addMajor);
+dictionaryRouter.get("/groups", verifyToken_1.verifyToken, getGroups_1.getGroups);
+exports.default = dictionaryRouter;

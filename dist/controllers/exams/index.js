@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.uploadConclusion = exports.updateExam = exports.getExams = exports.getConclusion = exports.deleteExam = exports.addExam = void 0;
+const addExam_1 = require("./addExam");
+Object.defineProperty(exports, "addExam", { enumerable: true, get: function () { return addExam_1.addExam; } });
+const deleteExam_1 = require("./deleteExam");
+Object.defineProperty(exports, "deleteExam", { enumerable: true, get: function () { return deleteExam_1.deleteExam; } });
+const getConclusions_1 = require("./getConclusions");
+Object.defineProperty(exports, "getConclusion", { enumerable: true, get: function () { return getConclusions_1.getConclusion; } });
+const getExams_1 = require("./getExams");
+Object.defineProperty(exports, "getExams", { enumerable: true, get: function () { return getExams_1.getExams; } });
+const updateExam_1 = require("./updateExam");
+Object.defineProperty(exports, "updateExam", { enumerable: true, get: function () { return updateExam_1.updateExam; } });
+const uploadConclusion_1 = require("./uploadConclusion");
+Object.defineProperty(exports, "uploadConclusion", { enumerable: true, get: function () { return uploadConclusion_1.uploadConclusion; } });

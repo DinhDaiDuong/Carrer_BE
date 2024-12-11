@@ -1,0 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const createGroup_1 = require("../controllers/group/createGroup");
+const deleteGroup_1 = require("../controllers/group/deleteGroup");
+const getGroup_1 = require("../controllers/group/getGroup");
+const getListGroups_1 = require("../controllers/group/getListGroups");
+const getListGroupSelect_1 = require("../controllers/group/getListGroupSelect");
+const updateGroup_1 = require("../controllers/group/updateGroup");
+const verifyToken_1 = require("../middlewares/verifyToken");
+const groupRouter = (0, express_1.Router)();
+groupRouter.get("/all", verifyToken_1.verifyToken, getListGroups_1.getListGroups);
+groupRouter.post("/", verifyToken_1.verifyToken, createGroup_1.createGroup);
+groupRouter.get("/", verifyToken_1.verifyToken, getGroup_1.getGroup);
+groupRouter.put("/", verifyToken_1.verifyToken, updateGroup_1.updateGroup);
+groupRouter.delete("/", verifyToken_1.verifyToken, deleteGroup_1.deleteGroup);
+groupRouter.get("/select", verifyToken_1.verifyToken, getListGroupSelect_1.getListGroupSelect);
+exports.default = groupRouter;

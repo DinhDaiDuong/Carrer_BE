@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const ocrGemini_1 = require("../controllers/OCR/ocrGemini");
+const verifyToken_1 = require("../middlewares/verifyToken");
+const ocrRouter = (0, express_1.Router)();
+//ocrRouter.post("/ocrGemini", upload.single("file"), ocrGemini);
+//ocrRouter.post("/ocrGemini", uploadImages.single("file"), ocrGemini);
+ocrRouter.post("/ocrGemini", verifyToken_1.verifyToken, ocrGemini_1.ocrGemini);
+exports.default = ocrRouter;
