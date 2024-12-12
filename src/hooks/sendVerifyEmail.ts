@@ -13,7 +13,7 @@ export const sendVerifyEmail = async (
   id: string,
   name?: string
 ) => {
-  const actionLink = `https://career-app-ndt9.onrender.com/accounts/verify?id=${id}`;
+  const actionLink = `http://:3000/verify?id=${id}`;
   const info = await transporter.sendMail({
     from: `"My Daily" <doank3442@gmail.com>`,
     to: emails.length > 1 ? emails.join(", ") : emails[0],

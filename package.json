@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.ts",
-    "start:develop": "NODE_ENV=development npm start",
-    "start:staging": "NODE_ENV=staging npm start",
-    "start:production": "NODE_ENV=production npm start"
-  },
+ "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "ts-node index.ts",
+  "start:develop": "cross-env NODE_ENV=development ts-node index.ts",
+  "start:staging": "cross-env NODE_ENV=staging ts-node index.ts",
+  "start:production": "cross-env NODE_ENV=production ts-node index.ts"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
