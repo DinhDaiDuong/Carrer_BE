@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const addSubjects_1 = require("../controllers/schoolSubjects/addSubjects");
+const caculateScoreSubjects_1 = require("../controllers/schoolSubjects/caculateScoreSubjects");
+const deleteSubject_1 = require("../controllers/schoolSubjects/deleteSubject");
+const editSubject_1 = require("../controllers/schoolSubjects/editSubject");
+const getSubjects_1 = require("../controllers/schoolSubjects/getSubjects");
+const verifyToken_1 = require("../middlewares/verifyToken");
+const schoolSubjectRouter = (0, express_1.Router)();
+schoolSubjectRouter.post("/addSubjects", verifyToken_1.verifyToken, addSubjects_1.addSubjects);
+schoolSubjectRouter.get("/getSubjects", verifyToken_1.verifyToken, getSubjects_1.getSubjects);
+schoolSubjectRouter.delete("/deleteSubjects", verifyToken_1.verifyToken, deleteSubject_1.deleteSubjects);
+schoolSubjectRouter.post("/caculateScore", verifyToken_1.verifyToken, caculateScoreSubjects_1.caculateScoreSubjects);
+schoolSubjectRouter.put("/", verifyToken_1.verifyToken, editSubject_1.editSubject);
+exports.default = schoolSubjectRouter;

@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const getReport_1 = require("../controllers/statistics/getReport");
+const getStatistics_1 = require("../controllers/statistics/getStatistics");
+const updateReport_1 = require("../controllers/statistics/updateReport");
+const verifyToken_1 = require("../middlewares/verifyToken");
+const reportRouter = (0, express_1.Router)();
+reportRouter.get("/statistics", verifyToken_1.verifyToken, getStatistics_1.getStatistics);
+reportRouter.post("/", verifyToken_1.verifyToken, updateReport_1.updateReport);
+reportRouter.get("/", verifyToken_1.verifyToken, getReport_1.getReport);
+exports.default = reportRouter;
