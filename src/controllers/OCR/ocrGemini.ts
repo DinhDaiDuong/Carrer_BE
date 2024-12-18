@@ -4,7 +4,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { convertTextToArray } from "./utils/convertTextToArray";
 import OCRDataset from "./mocks/OCRDataset";
 import axios from "axios";
-const API_KEY = process.env.OCR_KEY;
+const API_KEY = "AIzaSyB3rPeQ-4lJWOOl1-fNljY7BIoBVK6b75w";
 const genAI = new GoogleGenerativeAI(API_KEY!);
 const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
 
