@@ -11,21 +11,26 @@ const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
 export const ocrGemini = async (req: Request, res: Response) => {
   try {
     const { base64Image, mimeType } = req.body;
-    //console.log("base64", base64Image);
+    console.log("Received OCR request with image data");
+
     const result = await model.generateContent([
       OCRDataset,
       { inlineData: { data: JSON.parse(base64Image), mimeType: mimeType } },
     ]);
-    console.log("result", result);
+
+    console.log("OCR result:", result);
+
     const text = await result.response.text();
-    console.log("text", text);
+    console.log("Extracted text:", text);
+
     if (text) {
       const response = await convertTextToArray(text);
       return res.send({ code: 200, data: response });
     }
+
     return res.send(ErrorUtils.get("OCR_ERROR"));
   } catch (e) {
-    console.log("e >>>", e);
+    console.error("Error during OCR processing:", e);
     return res.send(ErrorUtils.get("SERVER_ERROR"));
   }
 };
