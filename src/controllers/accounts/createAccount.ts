@@ -6,7 +6,6 @@ import { GroupModel } from "../../models/Group";
 import ErrorUtils from "../../utils/constant/Error";
 import { IAccount } from "../../utils/interfaces/Account";
 type TBody = Partial<IAccount>;
-
 export const createAccount = async (
   req: Request<any, any, TBody>,
   res: Response
@@ -20,11 +19,6 @@ export const createAccount = async (
     const isExistUserName = await AccountModel.findOne({
       username: data.username,
     });
-
-    // Fetch creator and validate account existence
-    const creator = await AccountModel.findById(req.userId);
-    if (!creator) return res.send(ErrorUtils.get("ACCOUNT_INVALID"));
-
     if (!isExisEmail && !isExistUserName) {
       if (data.password) {
         const hashedPassword = await bcrypt.hash(data.password, 10);
@@ -46,8 +40,6 @@ export const createAccount = async (
           groups, // Assign group IDs directly
           status: 0,
           password: hashedPassword,
-          creatorId: creator._id,
-          creator: creator.email,
         });
 
         await newAccount.save();
