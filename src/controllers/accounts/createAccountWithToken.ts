@@ -6,7 +6,9 @@ import { GroupModel } from "../../models/Group";
 import ErrorUtils from "../../utils/constant/Error";
 import { IAccount } from "../../utils/interfaces/Account";
 import { TRequest } from "../../utils/types/meta";
+
 type TBody = Partial<IAccount>;
+
 export const createAccountWithToken = async (
   req: TRequest<TBody>,
   res: Response
@@ -46,8 +48,8 @@ export const createAccountWithToken = async (
           groups, // Assign group IDs directly
           status: 0,
           password: hashedPassword,
-          creatorId: creator?.id,
-          creator: creator?.email,
+          creatorId: creator._id,
+          creator: creator.email,
         });
 
         await newAccount.save();
