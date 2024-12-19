@@ -22,7 +22,7 @@ const accountRouter = Router();
 
 accountRouter.get("/all", verifyToken, getListAccounts);
 accountRouter.get("/", verifyToken, getAccount);
-accountRouter.post("/signup", createAccount);
+accountRouter.post("/", createAccount);
 accountRouter.put("/status", verifyToken, updateStatusAccount);
 accountRouter.put("/info", verifyToken, updateInfoAccount);
 accountRouter.delete("/", verifyToken, deleteAccount);
