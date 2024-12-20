@@ -5,7 +5,7 @@ import ErrorUtils from "../../utils/constant/Error";
 import { dataSet } from "./dataSet";
 
 // Access your API key as an environment variable
-const API_KEY = "AIzaSyDFL0XYL3qq7v7Ipf0HRUfFrW-zWFE6Xbg";
+const API_KEY = "AIzaSyBRy--41ihCzQLQweCF7BHiZDcWnECzKek";
 if (!API_KEY) {
   throw new Error("API key for Google Generative AI is not set in environment variables");
 }
