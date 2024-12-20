@@ -4,7 +4,7 @@ import "dotenv/config";
 import ErrorUtils from "../../utils/constant/Error";
 import { dataSet } from "./dataSet";
 // Access your API key as an environment variable (see "Set up your API key" above)
-const API_KEY = process.env.GOOGLE_API_KEY;
+const API_KEY = "AIzaSyDFL0XYL3qq7v7Ipf0HRUfFrW-zWFE6Xbg";
 const genAI = new GoogleGenerativeAI(API_KEY!);
 const generationConfig = {
   maxOutputTokens: 200,
