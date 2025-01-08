@@ -1,0 +1,14 @@
+import { Router } from "express";
+import { addSubjects } from "../controllers/schoolSubjects/addSubjects";
+import { caculateScoreSubjects } from "../controllers/schoolSubjects/caculateScoreSubjects";
+import { deleteSubjects } from "../controllers/schoolSubjects/deleteSubject";
+import { editSubject } from "../controllers/schoolSubjects/editSubject";
+import { getSubjects } from "../controllers/schoolSubjects/getSubjects";
+import { verifyToken } from "../middlewares/verifyToken";
+const schoolSubjectRouter = Router();
+schoolSubjectRouter.post("/addSubjects", verifyToken, addSubjects);
+schoolSubjectRouter.get("/getSubjects", verifyToken, getSubjects);
+schoolSubjectRouter.delete("/deleteSubjects", verifyToken, deleteSubjects);
+schoolSubjectRouter.post("/caculateScore", verifyToken, caculateScoreSubjects);
+schoolSubjectRouter.put("/", verifyToken, editSubject);
+export default schoolSubjectRouter;
